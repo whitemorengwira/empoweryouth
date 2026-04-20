@@ -418,6 +418,19 @@ function S50({a}:P){if(!a)return null;return(<div className="slide"><BG n={50} a
 /* ========== MAIN ========== */
 const SL=[S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11,S12,S13,S14,S15,S16,S17,S18,S19,S20,S21,S22,S23,S24,S25,S26,S27,S28,S29,S30,S31,S32,S33,S34,S35,S36,S37,S38,S39,S40,S41,S42,S43,S44,S45,S46,S47,S48,S49,S50];
 
+/* ========== MAP DATA ========== */
+const M = [
+  { s: "Context", i:0, slides: [ {i:0, t:"EmpowerYouth"}, {i:1, t:"Africa Summit"}, {i:2, t:"Dynamics"}, {i:3, t:"AI & Platforms"}, {i:4, t:"Youth"}, {i:5, t:"Potential"} ]},
+  { s: "Skills", i:6, slides: [ {i:6, t:"Breaking In"}, {i:7, t:"Production"}, {i:8, t:"Writing"}, {i:9, t:"Sound"}, {i:10, t:"Art Dept"}, {i:11, t:"Post-Prod"} ]},
+  { s: "Story", i:12, slides: [ {i:12, t:"Visuals"}, {i:13, t:"Structure"}, {i:14, t:"Observation"} ]},
+  { s: "Soft Skills", i:15, slides: [ {i:15, t:"Reliability"}, {i:16, t:"Collab"}, {i:17, t:"Comm"}, {i:18, t:"Resilience"}, {i:19, t:"Problem Solving"} ]},
+  { s: "Industry", i:20, slides: [ {i:20, t:"Roles"}, {i:21, t:"Workflow"}, {i:22, t:"SA Context"}, {i:23, t:"Safety"} ]},
+  { s: "Toolkit", i:24, slides: [ {i:24, t:"Courses"}, {i:25, t:"Run on Set"}, {i:26, t:"Make Stuff"}, {i:27, t:"Network"}, {i:28, t:"Software"}, {i:29, t:"Entry Points"} ]},
+  { s: "Experience", i:30, slides: [ {i:30, t:"What Hires"}, {i:31, t:"Comparison"}, {i:32, t:"No Certs"}, {i:33, t:"Apprentice"}, {i:34, t:"Training"} ]},
+  { s: "Jobs", i:35, slides: [ {i:35, t:"Entry Jobs"}, {i:36, t:"Runner"}, {i:37, t:"Cam Trainee"}, {i:38, t:"Art Assist"}, {i:39, t:"Trust"}, {i:40, t:"Rehire"}, {i:41, t:"Don't Just Study"} ]},
+  { s: "Access", i:42, slides: [ {i:42, t:"Bottom Line"}, {i:43, t:"No Barriers"}, {i:44, t:"Phones"}, {i:45, t:"48-Hour"}, {i:46, t:"NFVF"}, {i:47, t:"Social Media"}, {i:48, t:"SA Academy"}, {i:49, t:"Next Move"} ]}
+];
+
 export default function App(){
   const[c,setC]=useState(0);
   const[d,setD]=useState(0);
@@ -440,6 +453,27 @@ export default function App(){
     <nav className="nav">
       <div className="nav__prog" style={{width:`${((c+1)/SL.length)*100}%`}}/>
       <img src="/sa-film-academy-logo.png" alt="SA Film Academy" className="nav__logo"/>
+      
+      <div className="nav__map">
+        {M.map(grp => {
+          const isActive = c >= grp.slides[0].i && c <= grp.slides[grp.slides.length-1].i;
+          return (
+            <div key={grp.s} className="nav__map-grp">
+              <button className={`nav__map-btn ${isActive ? 'active' : ''}`} onClick={() => go(grp.i)}>
+                {grp.s}
+              </button>
+              <div className="nav__map-sub">
+                {grp.slides.map(sl => (
+                  <button key={sl.i} className={`nav__map-item ${c === sl.i ? 'active' : ''}`} onClick={(e) => { e.stopPropagation(); go(sl.i); }}>
+                    {String(sl.i + 1).padStart(2, '0')}. {sl.t}
+                  </button>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
       <div className="nav__ctrls">
         <span className="nav__count">{String(c+1).padStart(2,'0')} / {String(SL.length).padStart(2,'0')}</span>
         <button className="nav__btn" onClick={pv} disabled={c===0} aria-label="Previous"><ChevronLeft size={20}/></button>
