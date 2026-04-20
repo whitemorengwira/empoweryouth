@@ -459,8 +459,8 @@ export default function App(){
         {M.map(grp => {
           const isActive = c >= grp.slides[0].i && c <= grp.slides[grp.slides.length-1].i;
           return (
-            <div key={grp.s} className="nav__map-grp">
-              <button className={`nav__map-btn ${isActive ? 'active' : ''}`} onClick={() => go(grp.i)}>
+            <div key={grp.s} className="nav__map-grp" onClick={() => go(grp.i)}>
+              <button className={`nav__map-btn ${isActive ? 'active' : ''}`}>
                 {grp.s}
               </button>
               <div className="nav__map-sub">
