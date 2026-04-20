@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Film, PenTool, Clapperboard } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Film, PenTool, Clapperboard, ArrowRight } from 'lucide-react';
 import './index.css';
 
 /* 50 unique images */
@@ -455,6 +455,7 @@ export default function App(){
       <img src="/sa-film-academy-logo.png" alt="SA Film Academy" className="nav__logo"/>
       
       <div className="nav__map">
+        <span className="nav__map-label"><strong>NAVIGATION</strong> <ArrowRight size={16}/></span>
         {M.map(grp => {
           const isActive = c >= grp.slides[0].i && c <= grp.slides[grp.slides.length-1].i;
           return (
