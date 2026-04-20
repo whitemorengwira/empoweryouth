@@ -98,8 +98,9 @@ body{font-family:'Inter',sans-serif;color:var(--white);-webkit-font-smoothing:an
 .grid--3{grid-template-columns:1fr 1fr 1fr}
 
 /* ========== FOOTER — WHITE BACKGROUND ========== */
-.nav{position:fixed;bottom:0;left:0;width:100%;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:.75rem 2.5rem;background:#fff;box-shadow:0 -2px 20px rgba(0,0,0,.15)}
-.nav__logo{height:34px;width:auto;object-fit:contain;flex-shrink:0}
+.nav{position:fixed;bottom:0;left:0;width:100%;height:80px;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:#fff;box-shadow:0 -2px 20px rgba(0,0,0,.15)}
+.nav__logo{height:54px;width:auto;object-fit:contain;flex-shrink:0;cursor:pointer;transition:transform 0.2s}
+.nav__logo:hover{transform:scale(1.03)}
 
 /* === SITE MAP ON FOOTER === */
 @keyframes tab-flash {

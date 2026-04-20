@@ -452,7 +452,7 @@ export default function App(){
     </AnimatePresence>
     <nav className="nav">
       <div className="nav__prog" style={{width:`${((c+1)/SL.length)*100}%`}}/>
-      <img src="/sa-film-academy-logo.png" alt="SA Film Academy" className="nav__logo"/>
+      <img src="/sa-film-academy-logo.png" alt="SA Film Academy" className="nav__logo" onClick={() => go(0)} title="Return to Context" />
       
       <div className="nav__map">
         <span className="nav__map-label"><strong>NAVIGATION</strong> <ArrowRight size={16}/></span>
