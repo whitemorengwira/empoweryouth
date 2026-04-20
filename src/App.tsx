@@ -459,13 +459,22 @@ export default function App(){
         {M.map(grp => {
           const isActive = c >= grp.slides[0].i && c <= grp.slides[grp.slides.length-1].i;
           return (
-            <div key={grp.s} className="nav__map-grp" onClick={() => go(grp.i)}>
-              <button className={`nav__map-btn ${isActive ? 'active' : ''}`}>
+            <div key={grp.s} className="nav__map-grp">
+              <button 
+                className={`nav__map-btn ${isActive ? 'active' : ''}`} 
+                onPointerDown={(e) => { e.stopPropagation(); go(grp.i); }}
+                onClick={(e) => { e.stopPropagation(); go(grp.i); }}
+              >
                 {grp.s}
               </button>
               <div className="nav__map-sub">
                 {grp.slides.map(sl => (
-                  <button key={sl.i} className={`nav__map-item ${c === sl.i ? 'active' : ''}`} onClick={(e) => { e.stopPropagation(); go(sl.i); }}>
+                  <button 
+                    key={sl.i} 
+                    className={`nav__map-item ${c === sl.i ? 'active' : ''}`} 
+                    onPointerDown={(e) => { e.stopPropagation(); go(sl.i); }}
+                    onClick={(e) => { e.stopPropagation(); go(sl.i); }}
+                  >
                     {String(sl.i + 1).padStart(2, '0')}. {sl.t}
                   </button>
                 ))}
