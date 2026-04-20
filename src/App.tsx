@@ -432,7 +432,7 @@ export default function App(){
     exit:(dir:number)=>({opacity:0,scale:0.96,filter:'blur(10px)',x:dir>0?-100:100}),
   };
   return(<div className="pres">
-    <AnimatePresence mode="wait" custom={d}>
+    <AnimatePresence custom={d}>
       <motion.div key={c} custom={d} variants={v} initial="enter" animate="center" exit="exit" transition={{duration:.65,ease:E}} style={{position:'absolute',width:'100%',height:'100%'}}>
         <Sl a={true}/>
       </motion.div>
