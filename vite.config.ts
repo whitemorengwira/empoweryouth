@@ -19,18 +19,22 @@ export default defineConfig({
         start_url: '/',
         icons: [
           {
-            src: '/sa-film-academy-logo.png',
+            src: '/pwa-icon.svg',
             sizes: '192x192',
-            type: 'image/png',
+            type: 'image/svg+xml',
             purpose: 'any maskable'
           },
           {
-            src: '/sa-film-academy-logo.png',
+            src: '/pwa-icon.svg',
             sizes: '512x512',
-            type: 'image/png',
+            type: 'image/svg+xml',
             purpose: 'any maskable'
           }
         ]
+      },
+      devOptions: {
+        enabled: true,
+        type: 'module'
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg}'],
