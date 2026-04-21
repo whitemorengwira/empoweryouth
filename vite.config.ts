@@ -10,9 +10,9 @@ export default defineConfig({
       injectRegister: 'auto',
       includeAssets: ['**/*.png', '**/*.jpg', '**/*.svg', '**/*.ico'],
       manifest: {
-        name: 'EmpowerYouth - SA Film Academy',
-        short_name: 'EmpowerYouth',
-        description: 'Cinematic presentation for the SA Film Academy EmpowerYouth summit.',
+        name: 'EmpowaYouth - SA Film Academy',
+        short_name: 'EmpowaYouth',
+        description: 'Cinematic presentation for the SA Film Academy Vaal EmpowaYouth Week 2026.',
         theme_color: '#030303',
         background_color: '#030303',
         display: 'standalone',
