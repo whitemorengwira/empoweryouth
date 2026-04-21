@@ -38,7 +38,7 @@ type P={a:boolean};
 function S1({a}:P){if(!a)return null;return(<div className="slide"><BG n={1}/><div className="ov ov--r"/><div className="ov ov--v"/>
 <div className="cnt cnt--right"><motion.div initial="hidden" animate="visible">
   <h1 className="ttl ttl--hero"><W t="Vaal"/><span className="accent"><W t="EmpowaYouth"/></span><W t="Week 2026"/></h1>
-  <motion.p variants={fu(.8)} className="sub">SA Film Academy</motion.p>
+  <motion.p variants={fu(.8)} className="sub">SA Film Academy • 22nd April, 2026</motion.p>
 </motion.div></div></div>);}
 
 /* SLIDE 2 — Global Context (removed Creative Futures Africa Summit reference) */
@@ -77,7 +77,7 @@ function S6({a}:P){if(!a)return null;return(<div className="slide"><BG n={6} alt
   <motion.div variants={fu(.1)}><span className="badge">The Convergence</span></motion.div>
   <h2 className="ttl ttl--lg"><W t="Unprecedented"/><span className="accent"><W t="Potential"/></span></h2>
   <motion.div variants={cr(.6)} className="gc float" style={{marginTop:'1.5rem'}}>
-    <p className="quote" style={{border:'none',padding:0,margin:0}}>
+    <p className="quote" style={{border:'none',padding:0,margin:0,fontSize:'clamp(1rem,1.4vw,1.4rem)'}}>
       "The convergence of youth demographic advantage, technological access, African cultural assets achieving global recognition, and opportunities for increasing institutional readiness, creates unprecedented transformation potential. The question is whether stakeholders will act decisively while this alignment persists"
     </p>
   </motion.div>
@@ -129,7 +129,7 @@ function S12({a}:P){if(!a)return null;return(<div className="slide"><BG n={12} a
 <div className="cnt cnt--right"><motion.div initial="hidden" animate="visible">
   <motion.div variants={fu(.1)}><span className="badge badge--section">Core Technical Skills</span></motion.div>
   <h2 className="ttl ttl--lg"><span className="accent"><W t="Post-Production"/></span></h2>
-  <motion.p variants={fu(.6)} className="sub">Editing basics: DaVinci Resolve / Premiere Pro, file management, codecs, color grading intro.</motion.p>
+  <motion.p variants={fu(.6)} className="sub">Editing basics: DaVinci Resolve / Premiere Pro, file management, color grading intro.</motion.p>
 </motion.div></div></div>);}
 
 /* SLIDE 13 — Storytelling / Visual Literacy (CORRECTED: removed "180-degree rule", badge--section) */
@@ -253,7 +253,7 @@ function S27({a}:P){if(!a)return null;return(<div className="slide"><BG n={27}/>
   <h2 className="ttl ttl--lg"><W t="Make"/><span className="accent"><W t="Stuff"/></span></h2>
   <motion.p variants={fu(.5)} className="sub" style={{fontWeight:600,color:'var(--white)'}}>1. Shoot shots on your phone</motion.p>
   <motion.p variants={fu(.7)} className="sub" style={{fontWeight:600,color:'var(--white)'}}>2. Learn Editing</motion.p>
-  <motion.p variants={fu(.9)} className="sub" style={{fontWeight:700,color:'var(--white)',fontSize:'clamp(1.5rem,2.2vw,2.1rem)'}}>3. Compile Your Portfolio — your work speaks louder than any certificate. Build a reel that showcases your range and creativity.</motion.p>
+  <motion.p variants={fu(.9)} className="sub" style={{fontWeight:700,color:'var(--white)',fontSize:'clamp(1.1rem,1.5vw,1.5rem)',maxWidth:'95%'}}>3. Compile Your Portfolio — your work speaks louder than any certificate. Build a reel that showcases your range and creativity.</motion.p>
 </motion.div></div></div>);}
 
 /* SLIDE 28 — Network (CORRECTED: "NFVF workshops" → "Industry Initiatives", badge--section) */
