@@ -99,8 +99,8 @@ body{font-family:'Inter',sans-serif;color:var(--white);-webkit-font-smoothing:an
 
 /* ========== FOOTER — WHITE BACKGROUND ========== */
 .nav{position:fixed;bottom:0;left:0;width:100%;height:80px;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:#fff;box-shadow:0 -2px 20px rgba(0,0,0,.15)}
-.nav__logo{height:100%;width:auto;object-fit:contain;flex-shrink:0;cursor:pointer;transition:transform 0.2s;transform:scale(1.25);transform-origin:left center}
-.nav__logo:hover{transform:scale(1.3)}
+.nav__logo{height:100%;width:auto;object-fit:contain;flex-shrink:0;cursor:pointer;transition:transform 0.2s;transform:scale(1.25) translateY(-8px);transform-origin:left center}
+.nav__logo:hover{transform:scale(1.3) translateY(-8px)}
 
 /* === SITE MAP ON FOOTER === */
 @keyframes tab-flash {
@@ -139,17 +139,42 @@ body{font-family:'Inter',sans-serif;color:var(--white);-webkit-font-smoothing:an
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .float{animation:float 4s ease-in-out infinite}
 
+/* === PWA INSTALL PROMPT === */
+.pwa-prompt{position:fixed;top:20px;right:20px;background:#fff;border-radius:12px;padding:1.5rem;box-shadow:0 10px 40px rgba(0,0,0,0.15);display:flex;gap:1rem;max-width:360px;z-index:9999;border-top:4px solid var(--accent);animation:slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1)}
+@keyframes slideIn{from{transform:translateY(-20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.pwa-prompt__icon{width:48px;height:48px;border-radius:12px;background:rgba(224,48,80,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pwa-prompt__cnt h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.1rem;color:#222;margin-bottom:0.3rem}
+.pwa-prompt__cnt p{font-family:'Inter',sans-serif;font-size:0.85rem;color:#666;line-height:1.4;margin-bottom:1rem}
+.pwa-prompt__actions{display:flex;gap:0.8rem;align-items:center}
+.pwa-prompt__install{background:var(--accent);color:#fff;border:none;border-radius:6px;padding:0.6rem 1.2rem;font-family:'Outfit',sans-serif;font-weight:600;cursor:pointer;transition:background 0.2s}
+.pwa-prompt__install:hover{background:#c02040}
+.pwa-prompt__cancel{background:none;border:none;color:#777;font-family:'Inter',sans-serif;font-size:0.9rem;cursor:pointer}
+.pwa-prompt__cancel:hover{color:#333;text-decoration:underline}
+.pwa-prompt__close{position:absolute;top:10px;right:10px;background:none;border:none;cursor:pointer;padding:0.2rem;display:flex;align-items:center;justify-content:center}
+.pwa-prompt__close:hover svg{stroke:#333}
+
+.nav__hamburger{display:none;background:none;border:none;cursor:pointer;padding:0.5rem;color:#000}
+
 ::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 
 @media(max-width:1024px){
   .cnt--right,.cnt--left{width:100%;padding:2rem 1.5rem}.grid--3{grid-template-columns:1fr 1fr}
-  .nav {flex-wrap:wrap;height:auto;padding:0.5rem 1rem;row-gap:0.5rem}
-  .nav__logo {height:36px;transform:scale(1)}
+  .nav {flex-wrap:nowrap;height:auto;padding:0.5rem 1.5rem;row-gap:0.5rem;justify-content:space-between}
+  .nav__logo {height:44px;transform:scale(1)}
   .nav__logo:hover {transform:none}
   .nav__ctrls {gap:0.5rem}
   .nav__btn {width:36px;height:36px}
-  .nav__map {width:100%;margin:0;justify-content:flex-start;overflow-x:auto;padding-bottom:0.4rem;height:40px}
+  .nav__hamburger {display:flex}
+  
+  /* Mobile Hamburger Wrapper (Drawer styling) */
+  .nav__map {display:none;position:absolute;bottom:100%;left:0;width:100%;background:#ffffff;height:auto;max-height:60vh;overflow-y:auto;border-top:1px solid #eee;box-shadow:0 -10px 40px rgba(0,0,0,0.15);padding:1rem 0;z-index:199;margin:0;flex-direction:column}
+  .nav__map.open {display:flex;animation:slideUp 0.3s cubic-bezier(0.16,1,0.3,1)}
+  @keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+  
+  .nav__map-grp {width:100%;padding:0;display:flex;align-items:stretch;}
+  .nav__map-btn {width:100%;justify-content:flex-start;padding:1rem 2rem;border-bottom:1px solid #f5f5f5;border-radius:0;font-size:1.2rem}
+  .nav__map-sub {display:none !important} /* Simplified direct-links on mobile */
   .nav__map-label {display:none}
-  .nav__map-btn {font-size:0.85rem;padding:0 0.8rem}
-  .nav__map-sub {display:none !important}
+  
+  .pwa-prompt {top:auto;bottom:90px;right:20px;left:20px;max-width:none}
 }

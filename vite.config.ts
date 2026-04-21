@@ -16,16 +16,19 @@ export default defineConfig({
         theme_color: '#030303',
         background_color: '#030303',
         display: 'standalone',
+        start_url: '/',
         icons: [
           {
             src: '/sa-film-academy-logo.png',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/png',
+            purpose: 'any maskable'
           },
           {
             src: '/sa-film-academy-logo.png',
             sizes: '512x512',
-            type: 'image/png'
+            type: 'image/png',
+            purpose: 'any maskable'
           }
         ]
       },

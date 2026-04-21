@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Film, PenTool, Clapperboard, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Film, PenTool, Clapperboard, ArrowRight, Menu, Download, X } from 'lucide-react';
 import './index.css';
 
 /* 50 unique images */
@@ -244,7 +244,7 @@ function S28({a}:P){if(!a)return null;return(<div className="slide"><BG n={28} a
 function S29({a}:P){if(!a)return null;return(<div className="slide"><BG n={29}/><div className="ov ov--r"/>
 <div className="cnt cnt--right"><motion.div initial="hidden" animate="visible">
   <motion.div variants={fu(.1)}><span className="badge">Build Your Toolkit</span></motion.div>
-  <h2 className="ttl ttl--lg"><span className="accent"><W t="Software"/></span></h2>
+  <h2 className="ttl ttl--lg"><W t="Software"/><span className="accent"><W t="Skills"/></span></h2>
   <motion.p variants={fu(.6)} className="sub">Get comfortable with Celtx for writing, DaVinci Resolve (free) for editing, Zoom recorders for sound.</motion.p>
 </motion.div></div></div>);}
 
@@ -434,7 +434,21 @@ const M = [
 export default function App(){
   const[c,setC]=useState(0);
   const[d,setD]=useState(0);
-  const go=useCallback((i:number)=>{if(i<0||i>=SL.length)return;setD(i>c?1:-1);setC(i)},[c]);
+  const[dp,setDp]=useState<any>(null);
+  const[showPWA,setShowPWA]=useState(false);
+  const[mobMenu,setMobMenu]=useState(false);
+
+  useEffect(()=>{
+    const fn=(e:any)=>{e.preventDefault();setDp(e);setShowPWA(true);};
+    window.addEventListener('beforeinstallprompt',fn);
+    return()=>window.removeEventListener('beforeinstallprompt',fn);
+  },[]);
+
+  const installPWA=async()=>{
+    if(dp){dp.prompt();const r=await dp.userChoice;if(r.outcome==='accepted'){setShowPWA(false);setDp(null);}}
+  };
+
+  const go=useCallback((i:number)=>{if(i<0||i>=SL.length)return;setD(i>c?1:-1);setC(i);setMobMenu(false);},[c]);
   const nx=useCallback(()=>go(c+1),[c,go]);
   const pv=useCallback(()=>go(c-1),[c,go]);
   useEffect(()=>{const h=(e:KeyboardEvent)=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();nx()}if(e.key==='ArrowLeft'){e.preventDefault();pv()}};window.addEventListener('keydown',h);return()=>window.removeEventListener('keydown',h)},[nx,pv]);
@@ -450,11 +464,31 @@ export default function App(){
         <Sl a={true}/>
       </motion.div>
     </AnimatePresence>
+    
+    {showPWA && (
+      <div className="pwa-prompt">
+        <div className="pwa-prompt__icon"><Download size={24} color="#e03050"/></div>
+        <div className="pwa-prompt__cnt">
+          <h3>Install This Presentation</h3>
+          <p>Add to your home screen for quick access and offline use</p>
+          <div className="pwa-prompt__actions">
+            <button className="pwa-prompt__install" onClick={installPWA}>Install</button>
+            <button className="pwa-prompt__cancel" onClick={()=>setShowPWA(false)}>Not now</button>
+          </div>
+        </div>
+        <button className="pwa-prompt__close" onClick={()=>setShowPWA(false)}><X size={16} color="#999"/></button>
+      </div>
+    )}
+
     <nav className="nav">
       <div className="nav__prog" style={{width:`${((c+1)/SL.length)*100}%`}}/>
       <img src="/sa-film-academy-logo.png" alt="SA Film Academy" className="nav__logo" onClick={() => go(0)} title="Return to Context" />
       
-      <div className="nav__map">
+      <button className="nav__hamburger" onClick={() => setMobMenu(!mobMenu)}>
+        {mobMenu ? <X size={28} color="#000" /> : <Menu size={28} color="#000" />}
+      </button>
+      
+      <div className={`nav__map ${mobMenu ? 'open' : ''}`}>
         <span className="nav__map-label"><strong>NAVIGATION</strong> <ArrowRight size={16}/></span>
         {M.map(grp => {
           const isActive = c >= grp.slides[0].i && c <= grp.slides[grp.slides.length-1].i;
