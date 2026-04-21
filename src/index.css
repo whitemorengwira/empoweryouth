@@ -99,8 +99,8 @@ body{font-family:'Inter',sans-serif;color:var(--white);-webkit-font-smoothing:an
 
 /* ========== FOOTER — WHITE BACKGROUND ========== */
 .nav{position:fixed;bottom:0;left:0;width:100%;height:80px;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:#fff;box-shadow:0 -2px 20px rgba(0,0,0,.15)}
-.nav__logo{height:54px;width:auto;object-fit:contain;flex-shrink:0;cursor:pointer;transition:transform 0.2s}
-.nav__logo:hover{transform:scale(1.03)}
+.nav__logo{height:100%;width:auto;object-fit:contain;flex-shrink:0;cursor:pointer;transition:transform 0.2s;transform:scale(1.25);transform-origin:left center}
+.nav__logo:hover{transform:scale(1.3)}
 
 /* === SITE MAP ON FOOTER === */
 @keyframes tab-flash {
@@ -139,8 +139,17 @@ body{font-family:'Inter',sans-serif;color:var(--white);-webkit-font-smoothing:an
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .float{animation:float 4s ease-in-out infinite}
 
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
 @media(max-width:1024px){
   .cnt--right,.cnt--left{width:100%;padding:2rem 1.5rem}.grid--3{grid-template-columns:1fr 1fr}
-  .nav__map{display:none} /* Map hidden on very small screens to avoid overflow */
+  .nav {flex-wrap:wrap;height:auto;padding:0.5rem 1rem;row-gap:0.5rem}
+  .nav__logo {height:36px;transform:scale(1)}
+  .nav__logo:hover {transform:none}
+  .nav__ctrls {gap:0.5rem}
+  .nav__btn {width:36px;height:36px}
+  .nav__map {width:100%;margin:0;justify-content:flex-start;overflow-x:auto;padding-bottom:0.4rem;height:40px}
+  .nav__map-label {display:none}
+  .nav__map-btn {font-size:0.85rem;padding:0 0.8rem}
+  .nav__map-sub {display:none !important}
 }
