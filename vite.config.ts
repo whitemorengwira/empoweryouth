@@ -41,5 +41,9 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 60 * 1024 * 1024, /* 60MB to safely catch all cinematic images */
       }
     })
-  ]
+  ],
+  server: {
+    port: 3012,
+    host: true,
+  }
 })
