@@ -99,7 +99,7 @@ body{font-family:'Inter',sans-serif;color:var(--white);-webkit-font-smoothing:an
 
 /* ========== FOOTER — WHITE BACKGROUND ========== */
 .nav{position:fixed;bottom:0;left:0;width:100%;height:80px;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:#fff;box-shadow:0 -2px 20px rgba(0,0,0,.15)}
-.nav__logo{height:100%;width:auto;object-fit:contain;flex-shrink:0;cursor:pointer;transition:transform 0.2s;transform:scale(1.25) translateY(-8px);transform-origin:left center}
+.nav__logo{height:100%;width:auto;object-fit:contain;flex-shrink:0;cursor:pointer;transition:transform 0.2s;transform:scale(1.25) translateY(-8px);transform-origin:left center;margin-right:2.5rem}
 .nav__logo:hover{transform:scale(1.3) translateY(-8px)}
 
 /* === SITE MAP ON FOOTER === */
@@ -109,7 +109,7 @@ body{font-family:'Inter',sans-serif;color:var(--white);-webkit-font-smoothing:an
 }
 
 .nav__map{display:flex;align-items:center;justify-content:center;flex:1;margin:0 2rem;gap:0;height:100%}
-.nav__map-label{display:flex;align-items:center;gap:0.5rem;font-family:'Outfit',sans-serif;font-size:1rem;font-weight:900;letter-spacing:0.12em;color:var(--gray-200);text-transform:uppercase;margin-right:1rem}
+.nav__map-label{display:flex;align-items:center;gap:0.4rem;font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:900;letter-spacing:0.12em;color:var(--gray-200);text-transform:uppercase;margin-right:1rem}
 .nav__map-label strong{color:var(--gray-300)}
 .nav__map-label svg{color:var(--accent)}
 
